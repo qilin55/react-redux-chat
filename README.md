@@ -4,3 +4,12 @@ if(fun){
     return 'Just do it!'
 }
 ```
+
+## 操作流程
+
+### windows
+- 启动`express` `cd F:workspace\reactchat\server`
+- `nodemon server.js`
+- 启动`MongoDB` `cd C:\Program Files\MongoDB\Server\3.6\bin`
+- `mongod`
+-打开浏览器输入 `localhost:9000` 
