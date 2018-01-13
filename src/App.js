@@ -1,22 +1,60 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import {Button, List} from 'antd-mobile'
 import './App.css';
-import {createStore} from 'redux'
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Hello Coby!</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+	constructor(props) {
+		super(props)
+		this.state = {
+			teams: [
+				'草帽',
+				'红发',
+				'白胡子',
+			]
+		}
+	}
+	
+	addTeam = () => {
+		const {teams} = this.state
+		let newName = '新人' + Math.random().toFixed(4)
+		this.setState({
+			teams: [...teams, newName]
+		})
+	}
+	
+	render() {
+		const {teams} = this.state
+		return (
+			<div>
+				<h2>海贼王</h2>
+				<List
+					renderHeader={() => {
+					
+					}}
+				>
+					{teams.map(v => {
+						return (
+							<List className="Item" key={v}>
+								<Hat name={v}/>
+							</List>
+						)
+					})}
+				</List>
+				<Button type='primary' onClick={this.addTeam}>添加海贼团</Button>
+			</div>
+		)
+	}
 }
 
-export default App;
+class Hat extends Component {
+	constructor(props) {
+		super(props)
+	}
+	
+	render() {
+		const {name} = this.props
+		return <h2>{name}海贼团</h2>
+	}
+}
+
+export default App
