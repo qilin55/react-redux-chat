@@ -13,3 +13,7 @@ if(fun){
 - 启动`MongoDB` `cd C:\Program Files\MongoDB\Server\3.6\bin`
 - `mongod`
 -打开浏览器输入 `localhost:9000` 
+
+### 启动项目
+- `npm install`
+- `npm start`
