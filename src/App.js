@@ -1,60 +1,22 @@
-import React, {Component} from 'react';
-import {Button, List} from 'antd-mobile'
-import './App.css';
+import React,{Component} from 'react'
+import {connect} from 'react-redux'
+import {addGun, minusGun, addGunAsync} from './index.redux'
 
+@connect(
+	state=>({num:state.counter}),
+	{addGun, minusGun, addGunAsync}
+)
 class App extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			teams: [
-				'草帽',
-				'红发',
-				'白胡子',
-			]
-		}
-	}
-	
-	addTeam = () => {
-		const {teams} = this.state
-		let newName = '新人' + Math.random().toFixed(4)
-		this.setState({
-			teams: [...teams, newName]
-		})
-	}
-	
 	render() {
-		const {teams} = this.state
+		const {num, addGun, minusGun, addGunAsync} = this.props
 		return (
 			<div>
-				<h2>海贼王</h2>
-				<List
-					renderHeader={() => {
-					
-					}}
-				>
-					{teams.map(v => {
-						return (
-							<List className="Item" key={v}>
-								<Hat name={v}/>
-							</List>
-						)
-					})}
-				</List>
-				<Button type='primary' onClick={this.addTeam}>添加海贼团</Button>
+				<h1>现在有{num}把枪</h1>
+				<button onClick={addGun}>申请武器</button>
+				<button onClick={minusGun}>上交武器</button>
+				<button onClick={addGunAsync}>拖两天</button>
 			</div>
 		)
 	}
 }
-
-class Hat extends Component {
-	constructor(props) {
-		super(props)
-	}
-	
-	render() {
-		const {name} = this.props
-		return <h2>{name}海贼团</h2>
-	}
-}
-
 export default App
