@@ -13,6 +13,7 @@ import {
 import Auth from './Auth'
 import Dashboard from './Dashboard'
 import reducers from './reducer'
+import './config'
 
 const reduxDevtools = window.devToolsExtension?window.devToolsExtension():()=>{}
 const store = createStore(reducers, compose(
